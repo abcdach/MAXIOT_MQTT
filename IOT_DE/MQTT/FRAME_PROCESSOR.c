@@ -19,11 +19,11 @@ for( MQTT.ii = 0; MQTT.ii < TCPSoc.FRAME_LEN; MQTT.ii++ ){
 			case isMQTT_Unsubscribe_Request: DEB_DEV("... DE_SOC(%d) Message_Type: *** MQTT_Unsubscribe_Request\n\r",TCPSoc.Sock);break;
 			default:
 				DEB_DEV("... DE_SOC(%d) Message_Type: *** unknown 0x%02X\n\r",TCPSoc.Sock,MQTT.Message_Type);
-				break;
+				TA_STATUS = 255; break;
 		}
 	}
 
-
+	if( TA_STATUS != 0 ) break;
 
 	switch (MQTT.Message_Type){
 

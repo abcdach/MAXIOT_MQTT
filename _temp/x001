@@ -1,0 +1,702 @@
+openssl s_client -connect iot.eclipse.org:8883
+https://mcuoneclipse.com/2017/04/14/enable-secure-communication-with-tls-and-the-mosquitto-broker/
+https://www.youtube.com/watch?time_continue=91&v=qDjwVJEV_ow
+
+https://www.cyberciti.biz/faq/python-run-external-command-and-get-output/
+
+Python Run External Command And Get Output On Screen or In Variable
+https://www.cyberciti.biz/faq/python-run-external-command-and-get-output/
+http://5eonline.com/en/4-easy-ways-to-run-external-programs-in-cc/
+
+
+https://www.allpcb.com/online_pcb_quote.html
+# traseroute
+#http://www.computersecuritystudent.com/UNIX/SSH/lesson9/index.html
+
+ssh -f -N -T -R 19999:localhost:22 maxiot@104.168.53.100 
+dach : ssh -R 19999:localhost:22 maxiot@104.168.53.100 
+maxiot: ssh dach@localhost -p 19999
+
+How to ssh to a server using another server? 
+https://unix.stackexchange.com/questions/41493/how-to-ssh-to-a-server-using-another-server
+
+WHAT IS SSH PORT FORWARDING, AKA SSH TUNNELING?
+https://www.ssh.com/ssh/tunneling/example
+
+How to Use SSH Tunneling 
+https://www.howtogeek.com/168145/how-to-use-ssh-tunneling/
+
+http://xmodulo.com/access-linux-server-behind-nat-reverse-ssh-tunnel.html
+autossh -M 10900 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 1.1.1.1:10022:localhost:22 relayserver_user@1.1.1.1
+
+
+
+!!!!!!!!!!!!!
+https://superuser.com/questions/315523/ssh-connection-between-two-behind-nat-computers-through-third-public-ip-computer
+http://xmodulo.com/access-linux-server-behind-nat-reverse-ssh-tunnel.html
+http://xmodulo.com/how-to-enable-ssh-login-without.html
+!!!!!!!!!!!!!
+https://lowendbox.com/
+!!!!!!!!!!!!!
+var - > USA
+ssh -f -N -T -R 1234:localhost:22 maxiot@104.168.53.100 
+
+ilia - > USA
+putty.exe -L 2222:127.0.0.1:1234  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot 
+
+
+ssh -f -N -T -R 1234:localhost:22 maxiot@104.168.53.100 
+
+homeserver~$ 
+
+autossh -M 22222 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 2222:localhost:22 maxiot@104.168.53.100
+
+ssh-keygen -t rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub maxiot@104.168.53.100
+
+
+
+
+
+
+#################################################################################################
+22 ##############################################################################################
+#################################################################################################
+ssh -f -N -T -R 1234:localhost:22 maxiot@104.168.53.100 
+putty.exe -L 22:127.0.0.1:1234  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot 
+#################################################################################################
+80 ##############################################################################################
+#################################################################################################
+ssh -f -N -T -R 4234:localhost:80 maxiot@104.168.53.100 
+putty.exe -L 80:127.0.0.1:4234  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot 
+#################################################################################################
+3003 ############################################################################################
+#################################################################################################
+ssh -f -N -T -R 5234:localhost:3003 maxiot@104.168.53.100 
+putty.exe -L 3003:127.0.0.1:5234  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot 
+#################################################################################################
+4003 ############################################################################################
+#################################################################################################
+ssh -f -N -T -R 7234:localhost:4003 maxiot@104.168.53.100 
+putty.exe -L 4003:127.0.0.1:7234  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot 
+#################################################################################################
+
+tar -zcvf 001.Car.gz TEMP_MQTT_FileConfig/
+tar -zxvf 001.tar.gz
+
+#################################################################################################
+
+autossh -M 4203 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 4103:localhost:4003 maxiot@104.168.53.100
+putty.exe -L 4003:127.0.0.1:4103  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot
+
+#################################################################################################
+
+
+#{"_DES_":"subprocess.Popen"}
+#{"_PER_":"5"}
+#{"_OUT_0_DES_":"DATA OUT"}
+#{"_IN_0_PUSH_":"1"}
+
+#MEM_0 = ""
+#OUT_0 = str(IN_0)
+
+import subprocess
+#cmd = "/home/maxiot/TEMP_MQTT_FileConfig/SUB/POPEN/Test_Stream/test"
+cmd = "date"
+
+p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+(output, err) = p.communicate()
+p_status = p.wait()
+OUT_0 = str(output).rstrip()
+OUT_1 = str(p_status)
+
+
+
+#################################################################################################
+
+#{"_DES_":"subprocess.Popen"}
+#{"_PER_":"5"}
+#{"_OUT_0_DES_":"DATA OUT"}
+#{"_IN_0_PUSH_":"1"}
+
+#MEM_0 = ""
+#OUT_0 = str(IN_0)
+
+import subprocess
+cmd = "python /home/maxiot/x/SENSOR.py"
+#cmd = "date"
+
+p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+(output, err) = p.communicate()
+p_status = p.wait()
+OUT_0  = str(output).rstrip()
+OUT_1 = str(p_status)
+
+
+
+
+
+
+
+
+
+
+
+
+rc-local
+------------------------------------------------------
+Create a service:
+------------------------------------------------------
+sudo nano /etc/systemd/system/rc-local.service
+------------------------------------------------------
+Add your code there:
+------------------------------------------------------
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
+------------------------------------------------------
+Create and make sure /etc/rc.local is executable and add this code inside it:
+------------------------------------------------------
+sudo chmod +x /etc/rc.local
+------------------------------------------------------
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+exit 0
+------------------------------------------------------
+Enable the service:
+
+sudo systemctl enable rc-local
+------------------------------------------------------
+Start service and check status:
+
+sudo systemctl start rc-local.service
+sudo systemctl status rc-local.service
+------------------------------------------------------
+If all goes well you can add your code to the /etc/rc.local file then restart it.
+Note: Tested on Lubuntu 16.10.
+------------------------------------------------------
+Source:
+https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-local-with-systemd
+------------------------------------------------------
+#################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#{"_DES_":">> MySQL(Grafan)"}
+#{"_PER_":"0"}
+#{"_IN_0_PUSH_":"1"}
+
+import MySQLdb
+
+CREATE_TABLE= 1
+DTYPE		= "DOUBLE NOT NULL"
+
+SYS_DEBUG = 1
+STA = 1
+###################################################################
+#OUT_1 	= From_dbData
+OUT_0   = ""
+ARG_0	= 0
+ARG_1	= ""
+From_ID_Start = int("0")
+From_ID_Stop  = int("0")
+print("\n")
+
+##################################
+From_dbServer	= "127.0.0.1"
+From_dbUser		= "graf"
+From_dbPass		= "dach"
+From_dbBase		= "graf"
+From_DB_Table   = "DB_001"
+##################################
+To_dbServer	 	= "127.0.0.1"
+To_dbUser	 	= "graf"
+To_dbPass		= "dach"
+To_dbBase	 	= "graf"
+To_DB_Table     = "DB_201"
+##################################
+print "Connect dbServer(From) : " + From_dbServer+"("+From_dbBase+"."+From_DB_Table+")"
+try:
+	From_db = MySQLdb.connect(From_dbServer,From_dbUser,From_dbPass,From_dbBase)
+except MySQLdb.Error, e:
+	ARG_0 = e.args[0]
+	ARG_1 = e.args[1]
+	print "From : "+str(ARG_1)	
+	exit(0)
+print("OK")
+###################################################################
+print "Connect dbServer(To)   : " + To_dbServer+"("+To_dbBase+"."+To_DB_Table+")"
+try:
+	To_db = MySQLdb.connect(To_dbServer,To_dbUser,To_dbPass,To_dbBase)
+except MySQLdb.Error, e:
+	ARG_0 = e.args[0]
+	ARG_1 = e.args[1]
+	print "To : "+str(ARG_1)	
+	exit(0)
+print("OK")
+###################################################################
+
+print "#########################"
+
+From_DB_id     = ""
+From_DB_dt     = ""
+From_DB_metric = ""
+From_DB_Data   = ""    
+
+From_DB_START_Time = ""
+From_DB_STOP_Time = ""
+###################################################################
+# varkvevt from bazis pirve da bolo chanawers
+
+# sawyisi drois gansazgvra
+From_cursor = From_db.cursor()		
+From_sql = "SELECT * FROM %s ORDER BY id asc  LIMIT 1" % (From_DB_Table)
+try:
+	From_cursor.execute(From_sql)
+	results = From_cursor.fetchall()
+	for row in results:
+		From_DB_id     = row[0]
+		From_DB_dt     = row[1]
+		From_DB_metric = row[2]
+		From_DB_Data   = row[3]   
+		
+		From_DB_START_Time = From_DB_dt
+		
+		#if SYS_DEBUG == 1 : print "From_DB   : id    : ", From_DB_id
+		#if SYS_DEBUG == 1 : print "From_DB : id : ", From_DB_id, " : dt : ", From_DB_dt, " : met : ", From_DB_metric, " : Data : ", From_DB_Data
+
+except:
+	if SYS_DEBUG == 1 : print "From_Error: unable to fecth data" 
+		
+#bolo chanaweris drois gansazgvra	
+From_cursor = From_db.cursor()		
+From_sql = "SELECT * FROM %s ORDER BY id DESC LIMIT 1" % (From_DB_Table)
+try:
+	From_cursor.execute(From_sql)
+	results = From_cursor.fetchall()
+	for row in results:
+		From_DB_id     = row[0]
+		From_DB_dt     = row[1]
+		From_DB_metric = row[2]
+		From_DB_Data   = row[3]   
+		
+		From_DB_STOP_Time = From_DB_dt
+		
+		#if SYS_DEBUG == 1 : print "From_DB   : id    : ", From_DB_id
+		#if SYS_DEBUG == 1 : print "From_DB : id : ", From_DB_id, " : dt : ", From_DB_dt, " : met : ", From_DB_metric, " : Data : ", From_DB_Data
+
+except:
+	if SYS_DEBUG == 1 : print "From_Error: unable to fecth data" 
+	
+	
+import time
+import calendar	
+
+mysql_time = str(From_DB_START_Time)
+mysql_time_struct = time.strptime(mysql_time, '%Y-%m-%d %H:%M:%S')
+From_DB_START_Time_s = calendar.timegm(mysql_time_struct)
+
+mysql_time = str(From_DB_STOP_Time)
+mysql_time_struct = time.strptime(mysql_time, '%Y-%m-%d %H:%M:%S')
+From_DB_STOP_Time_s  = calendar.timegm(mysql_time_struct)	
+
+if SYS_DEBUG == 1 : print "From_DB_START_Time : ", From_DB_START_Time , " (",From_DB_START_Time_s,")"
+if SYS_DEBUG == 1 : print "From_DB_STOP_Time  : ", From_DB_STOP_Time  , " (",From_DB_STOP_Time_s,")"
+	
+	
+
+
+	
+	
+	
+#exit(0)
+###################################################################		
+To_DB_id     = ""
+To_DB_iid    = ""
+To_DB_dt     = ""
+To_DB_metric = ""
+To_DB_Data   = "" 
+
+DB_START_Time = ""
+###################################################################
+To_DB_Empty  = 1
+To_cursor = To_db.cursor()		
+To_sql = "SELECT * FROM %s ORDER BY id DESC LIMIT 1" % (To_DB_Table)
+#print To_sql
+try:
+	To_cursor.execute(To_sql)
+	results = To_cursor.fetchall()
+	for row in results:
+   		To_DB_Empty  = 0
+		To_DB_iid    = row[1]
+		To_DB_dt     = row[2]
+		if SYS_DEBUG == 1 : print "To_DB     : iid   : ", To_DB_iid
+		if SYS_DEBUG == 1 : print "To_DB     : dt    : ", To_DB_dt
+		
+except MySQLdb.Error, e:
+	ARG_0 = e.args[0]
+	ARG_1 = e.args[1]
+	if SYS_DEBUG == 1 : print ("To_Table_Error(" + str(ARG_0) + ") : " + str(ARG_1))
+	if ARG_0 == 1146:
+		if CREATE_TABLE == 1:
+			print ("To_Table_Error(" + str(ARG_0) + ") : " + "CREATE TABLE")
+			#To_sql = "CREATE TABLE %s(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, iid INT(6), dt TIMESTAMP,metric VARCHAR(30) NULL, value %s  )" % (To_DB_Table,DTYPE)
+			To_sql = "CREATE TABLE %s(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, iid INT(6), dt VARCHAR(30) NULL,metric VARCHAR(30) NULL, value %s  )" % (To_DB_Table,DTYPE)
+			
+			
+			To_curs = To_db.cursor()
+			To_curs.execute(To_sql)
+			To_db.commit()   
+			OUT_0 = "CREATE TABLE"   
+			
+			
+			
+			 	
+###################################################################	
+if To_DB_Empty == 1 :
+	print "To_DB : Table  : ", To_DB_Table, " : is Empty ! "
+	
+	DB_START_Time = From_DB_START_Time
+	
+	From_ID_Start = 0
+	From_ID_Stop  = From_ID_Start + 4
+	
+if To_DB_Empty == 0 :
+	From_To_Delta = int(From_DB_id) - int(To_DB_iid)
+	From_ID_Start = int(To_DB_iid)+1
+	if From_To_Delta > 100000 :
+		From_ID_Stop  = From_ID_Start + 100000
+	else:
+		From_ID_Stop  = int(From_DB_id)
+
+###################################################################	
+	
+#print "From > To : Delta : ", str(From_To_Delta)
+#print "From_ID_Start   : ", str(From_ID_Start)
+#print "From_ID_Stop    : ", str(From_ID_Stop+1)
+if From_ID_Start == (From_ID_Stop+1) : exit(0)
+###################################################################	
+while From_ID_Start != (From_ID_Stop+1):
+	#print (str(From_ID_Start))
+	From_DB_Data_is_valid = 0
+	###################################################################
+	print "#########################"	
+	From_cursor = From_db.cursor()		
+	From_sql = "SELECT * FROM %s WHERE id = %d " % (From_DB_Table,From_ID_Start)
+	print From_sql
+	try:
+		From_cursor.execute(From_sql)
+		results = From_cursor.fetchall()
+		for row in results:
+			From_DB_Data_is_valid = 1
+			From_DB_id     = row[0]
+			From_DB_dt     = row[1]
+			From_DB_metric = row[2]
+			From_DB_Data   = row[3]
+			
+			print "From_DB : id : ", From_DB_id, " : dt : ", From_DB_dt, " : met : ", From_DB_metric, " : Data : ", From_DB_Data	
+	except:
+		print "From_Error: unable to fecth data" 		
+	###################################################################		
+	if From_DB_Data_is_valid == 0:
+		if SYS_DEBUG == 1 : print "From_Error: Data id : "+str(From_ID_Start)+" : is not valid !!!"
+	
+	###################################################################	
+	if From_DB_Data_is_valid == 1:
+
+		try:
+			sql = "INSERT INTO %s(iid,dt,metric,value) VALUES ('%s','%s','%s','%s')" % (To_DB_Table,From_DB_id,From_DB_dt,From_DB_metric,From_DB_Data)
+			#print(sql)
+			curs = To_db.cursor()
+			curs.execute(sql)
+			To_db.commit()
+			       
+			print "To_DB   : OK : "
+			
+			   
+		except MySQLdb.Error, e:
+	
+			ARG_0 = e.args[0]
+			ARG_1 = e.args[1]
+			print ("To_INSERT_Error(" + str(ARG_0) + ") : " + str(ARG_1)) 		
+	
+	
+		
+			#To_db.rollback() 
+			#try:
+				#ARG_0 = e.args[0]
+				#ARG_1 = e.args[1]
+				#print ("To_INSERT_Error(" + str(ARG_0) + ") : " + str(ARG_1))     	
+			#except :
+				#print ("ERROR 1")
+		#except :
+			#print ("ERROR 2")
+
+
+
+	###################################################################		
+	From_ID_Start += 1
+	###################################################################		
+
+
+exit(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To_dbTable	 = "gDB_022"
+To_dbmetric	 = "RAM"
+To_dbData	 = "123"
+
+
+print "#########################"	
+To_cursor = To_db.cursor()		
+To_sql = "SELECT * FROM %s ORDER BY id DESC LIMIT 1" % (To_dbTable)
+print To_sql
+try:
+	To_cursor.execute(To_sql)
+	results =To_cursor.fetchall()
+	for row in results:
+		print "To_DB: ", row[0]
+		print "To_DB: ", row[1]
+		print "To_DB: ", row[2]
+		print "To_DB: ", row[3]
+		#print "To_DB: ", row[4]
+except MySQLdb.Error, e:
+	ARG_0 = e.args[0]
+	ARG_1 = e.args[1]
+	print "To_Error: unable to fecth data"
+	print ARG_0
+	print ARG_1
+	if ARG_0 == 1146:
+		if CREATE_TABLE == 1:
+			To_sql = "CREATE TABLE %s(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, iid INT(6), dt TIMESTAMP,metric VARCHAR(30) NULL, value %s  )" % (To_dbTable,DTYPE)
+			To_curs = To_db.cursor()
+			To_curs.execute(To_sql)
+			To_db.commit()   
+			OUT_0 = "CREATE TABLE" 
+#print OUT_0			
+###################################################################		
+		
+		
+		
+		
+		
+		
+		
+		
+
+exit(0)	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+if STA == 1:
+	try:
+		To_sql = "INSERT INTO %s(metric,value) VALUES ('%s','%s')" % (To_dbTable,To_dbmetric,To_dbData)
+		To_curs = To_db.cursor()
+		To_curs.execute(To_sql)
+		To_db.commit()   
+		OUT_0 = "OK"  
+	except MySQLdb.Error, e:
+		STA = 0
+		To_db.rollback() 
+		OUT_0 = "ERROR 0"
+		try:
+			ARG_0 = e.args[0]
+			ARG_1 = e.args[1]
+			if ARG_0 == 1146:
+				OUT_0 = "Unknown Table"     	
+		except :
+			OUT_0 = "ERROR 1"
+	except :
+		STA = 0
+		OUT_0 = "ERROR 2"
+#print ARG_0
+#print ARG_1
+
+if ARG_0 == 1146:
+	if CREATE_TABLE == 1:
+		To_sql = "CREATE TABLE %s(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, iid INT(6), dt TIMESTAMP,metric VARCHAR(30) NULL, value %s  )" % (To_dbTable,DTYPE)
+		To_curs = To_db.cursor()
+		To_curs.execute(To_sql)
+		To_db.commit()   
+		OUT_0 = "CREATE TABLE" 
+
+print OUT_0
+
+   
+	
+	
+	
+	
+	
+###################################################################	
+	
+	
+try:
+	From_db = MySQLdb.connect(From_dbServer,From_dbUser,From_dbPass,From_dbBase)
+except MySQLdb.Error, e:
+	STA = 0
+	try:
+		ARG_0 = e.args[0]
+		ARG_1 = e.args[1]
+		print ARG_0
+		print ARG_1		
+		if ARG_0 == 2005:
+			OUT_0 = "Unknown host"        
+		if ARG_0 == 1045:
+			OUT_0 = "Access denied"
+		if ARG_0 == 1049:
+			OUT_0 = "Unknown database"	
+	except :
+		STA = 0 	
+	
+	
+	
+###################################################################	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+From_cursor = From_db.cursor()		
+From_sql = "SELECT * FROM %s ORDER BY id DESC LIMIT 1" % (From_dbTable)
+
+
+print From_sql
+
+try:
+   From_cursor.execute(From_sql)
+   results = From_cursor.fetchall()
+   for row in results:
+      print row[0]
+      print row[1]
+      print row[2]
+      print row[3]
+
+except:
+   print "Error: unable to fecth data"
+   
+
+#print OUT_0
+
+###################################################################
+
+
+
+
+
+
+###################################################################

@@ -147,7 +147,8 @@ void *DE_pthread__DEVICE_handler(void *arg)
 				default:
 				//-------------------------------------------------------
 					TCPSoc.FRAME_LEN = recv(TCPSoc.Sock, TCPSoc.RxFRAME , 4096 , 0);
-					if( TCPSoc.FRAME_LEN == 0 ){ TA_STATUS = 255; break; }
+					if( TCPSoc.FRAME_LEN == 0 )  { TA_STATUS = 255; break; }
+					if( TCPSoc.FRAME_LEN > 4096 ){ TA_STATUS = 255; break; }
 					TCPSoc.RxFRAME[TCPSoc.FRAME_LEN] = 0;
 					DEB_DEV("... DE_SOC(%d) ***** TCPSoc.FRAME_LEN = %d \n\r",TCPSoc.Sock,TCPSoc.FRAME_LEN);
 				//-------------------------------------------------------
