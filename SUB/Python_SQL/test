@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+import MySQLdb
+
+db = MySQLdb.connect("localhost","pma","dachdach","TEST" )
+cursor = db.cursor()
+
+sql = "INSERT INTO xdata(x1, x2, x3) VALUES ('%d', '%d', '%d' )" % (111, 222, 333)
+
+try:
+   cursor.execute(sql)
+   db.commit()
+   print "OK"
+except:
+   db.rollback()
+   print "ERROR"
+   
+db.close()

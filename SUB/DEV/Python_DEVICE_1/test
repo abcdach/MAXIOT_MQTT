@@ -1,0 +1,97 @@
+#	export PS1='> '
+
+import socket
+import sys
+import json
+import time
+
+#data1 = str(sys.argv[1])
+#data2 = str(sys.argv[2])
+#data3 = str(sys.argv[3])
+#data4 = str(sys.argv[4])
+
+data1 = 111
+data2 = 222
+data3 = 333
+data4 = 444
+
+print ( data1 )
+print ( data2 )
+print ( data3 )
+print ( data4 )
+
+Server_IP          = "10.0.0.25"
+Server_PORT        = 3004
+DEVICE_NAME        = "700"
+DEVICE_DESCRIPTION = "TEMP SENSOR"
+
+data = ""
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_address = (Server_IP, Server_PORT)
+sock.settimeout(15)
+sock.connect(server_address)
+
+try:
+
+	data = sock.recv(1024)
+	print >>sys.stderr, '--> SOCK %s' % data
+
+	json_data = json.loads(data)
+	N_VEL = int(json_data["N"])
+
+	if(N_VEL==1):
+		data = "{\"N\":\"1\",\"D\":\""+DEVICE_NAME+"\",\"V\":\""+DEVICE_DESCRIPTION+"\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)
+
+	data = sock.recv(1024)
+	print >>sys.stderr, '--> SOCK %s' % data
+	json_data = json.loads(data)
+	N_VEL = int(json_data["N"])
+	
+	TSLP = 0.05	# 0.02 sakmarisia
+	
+	if(N_VEL==2):
+		data = "{\"N\":\"0\",\"S\":\"0\",\"T\":\"0\",\"V\":\""+str(data1)+"\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)
+		
+		time.sleep (TSLP);
+		
+		data = "{\"N\":\"0\",\"S\":\"1\",\"T\":\"0\",\"V\":\""+str(data2)+"\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)
+		
+		time.sleep (TSLP);
+		
+		data = "{\"N\":\"0\",\"S\":\"2\",\"T\":\"0\",\"V\":\""+str(data3)+"\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)
+		
+		time.sleep (TSLP);
+		
+		data = "{\"N\":\"0\",\"S\":\"3\",\"T\":\"0\",\"V\":\""+str(data4)+"\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)	
+		
+		time.sleep (TSLP);
+		
+		data = "{\"N\":\"0\",\"S\":\"4\",\"T\":\"0\",\"V\":\"1\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)	
+		
+		time.sleep (TSLP);
+		
+		data = "{\"N\":\"5\"}"
+		sock.sendall(data)
+		print("<-- SOCK "+data)	
+		
+			
+	else:
+		print("<-- SOCK "+"Error !!!")
+
+
+finally:
+    print >>sys.stderr, 'closing socket'
+    sock.close()

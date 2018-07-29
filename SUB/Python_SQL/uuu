@@ -1,0 +1,35 @@
+import sys
+import time
+import select
+import paramiko
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#ssh.connect('149.3.111.194', port=1022, username="pi", password="pi")
+ssh.connect('10.0.0.100', port=22, username="pi", password="pi")
+
+stdin, stdout, stderr = ssh.exec_command('ping -c 1 www.data2iot.comping')
+#stdin, stdout, stderr = ssh.exec_command("ls -la")
+
+# Wait for the command to terminate
+while not stdout.channel.exit_status_ready():
+    # Only print data if there is data to read in the channel
+    if stdout.channel.recv_ready():
+        rl, wl, xl = select.select([stdout.channel], [], [], 0.0)
+        if len(rl) > 0:
+            # Print data from stdout
+            print stdout.channel.recv(1024),
+
+
+
+#output = stdout.readlines()
+
+#for line in stdout:
+#	print line
+#ssh.close()
+
+#print '\n'.join(output)
+#print ''.join(output)
+
+
+#ping -c 1 www.data2iot.comping

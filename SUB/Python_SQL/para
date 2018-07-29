@@ -1,0 +1,36 @@
+import paramiko
+import os
+paramiko.util.log_to_file('/tmp/paramiko.log')
+
+# Open a transport
+
+host = "149.3.111.194"
+port = 1022
+transport = paramiko.Transport((host, port))
+
+# Auth
+
+password = "pi"
+username = "pi"
+transport.connect(username = username, password = password)
+
+# Go!
+
+sftp = paramiko.SFTPClient.from_transport(transport)
+
+# Download
+
+#filepath = '/etc/passwd'
+#localpath = '/home/pi/temp/IOT/SUB/Python_SQL/DATA/'
+#sftp.get(filepath, localpath)
+
+# Upload
+localpath = '/home/pi/temp/IOT/SUB/Python_SQL/DATA/001.txt'
+filepath = '/home/pi/DATA/' + os.path.basename(localpath)
+
+sftp.put(localpath, filepath)
+
+# Close
+
+sftp.close()
+transport.close()

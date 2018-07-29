@@ -1,0 +1,29 @@
+https://github.com/mrwicks/miscellaneous/tree/master/tls_1.2_example
+
+-------------------------------------------------------------------------
+Install the OpenSSL library, for the ubuntu use the below command.
+
+sudo apt-get install libssl–dev
+-------------------------------------------------------------------------
+Before compiling the client and server program you will need a Certificate. You can generate your own certificate using the below command.
+
+openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+
+
+-------------------------------------------------------------------------
+
+Example Client code for TLS1.2 communication
+gcc -Wall -o client  Client.c -L/usr/lib -lssl -lcrypto
+
+-------------------------------------------------------------------------
+Example Server code for TLS1.2 communication
+gcc -Wall -o server Server.c -L/usr/lib -lssl -lcrypto
+-------------------------------------------------------------------------
+
+sudo ./server  8081
+./client  127.0.0.1 8081
+
+
+
+

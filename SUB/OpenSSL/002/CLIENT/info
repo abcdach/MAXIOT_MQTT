@@ -1,0 +1,5 @@
+http://fm4dd.com/openssl/sslconnect.htm
+
+gcc -o sslconnect sslconnect.c -lssl -lcrypto 
+
+

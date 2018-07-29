@@ -1,0 +1,9 @@
+
+https://shanetully.com/2012/04/simple-public-key-encryption-with-rsa-and-openssl/
+
+gcc -ggdb -Wall -Wextra -o rsa_test rsa_test.c -lcrypto
+
+
+
+
+

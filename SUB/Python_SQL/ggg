@@ -1,0 +1,24 @@
+import pexpect
+
+p = pexpect.spawn('ls')
+
+i = p.expect(['DATA', 'DATA  DDD ', pexpect.EOF, pexpect.TIMEOUT], timeout=3)
+print (p.before)
+if i==0:
+    print "0000000000000"
+    #p = pexpect.spawn('cd DATA')
+    p.sendline ('cd')
+    print p.read() 
+    p.expect (pexpect.EOF)
+    #p.sendline ('cd DATAs')
+    #p.expect ('$')
+    #p.sendline ('ls')
+    #p.expect ('$')
+if i==1:
+    print "1111111111111"
+if i==2:
+    print "2222222222222"
+if i==3:
+    print "3333333333333"
+#p.expect(pexpect.EOF)
+#print(p.before)

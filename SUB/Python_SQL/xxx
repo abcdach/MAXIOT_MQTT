@@ -1,0 +1,30 @@
+import os.path
+from time import gmtime, strftime
+#print strftime("%Y_%m_%d__%H_%M_%S", gmtime())
+
+fname = "/home/pi/temp/IOT/SUB/Python_SQL/DATA/006.txt"
+ff_Data = ""
+MY_Data = strftime("%Y_%m_%d__%H_%M", gmtime())
+print MY_Data
+if os.path.isfile(fname):
+	print "OK"
+	ff = open(fname, 'r')
+	ff_Data = ff.read().strip()
+	print ff_Data
+	ff.close()
+else:
+	print "ERROR"
+	ff = open(fname, "w")
+	print>>ff, "0000"	   
+	ff.close()
+	exit()
+
+if ff_Data == MY_Data:
+	print "OLD : "+strftime("%H_%M_%S", gmtime())
+else: 
+	print "NWE Time"
+	ff = open(fname, "w")
+	print>>ff, MY_Data	   
+	ff.close()
+
+

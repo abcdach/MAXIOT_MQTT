@@ -1,0 +1,17 @@
+import ftplib
+import os
+
+file = "/home/pi/temp/IOT/SUB/Python_SQL/DATA/002.txt"
+file_name = os.path.basename(file)
+
+#ftp = ftplib.FTP("10.0.0.100","21")
+
+ftp = ftplib.FTP()
+ftp.connect("10.0.0.100", 21)
+
+
+ftp.login("upload", "dach")
+ftp.storbinary('STOR '+file_name, open(file, 'rb'), 1024)
+
+
+

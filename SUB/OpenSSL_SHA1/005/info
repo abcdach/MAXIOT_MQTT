@@ -1,0 +1,5 @@
+https://www.uncg.edu/cmp/faculty/srtate/580.f11/sha1examples.php
+
+
+Example Client code for TLS1.2 communication
+gcc -Wall -o client  Client.c -L/usr/lib -lssl -lcrypto
