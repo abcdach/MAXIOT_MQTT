@@ -56,8 +56,38 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub maxiot@104.168.53.100
 
 
 
+#################################################################################################
+------------------------------------------------------------------
+1)**** How to enable SSH login without entering password
+------------------------------------------------------------------
+USER ---> MEDIATOR
+
+- shevdivart USER-shi
+- vagenirebt gasagebs
+ssh-keygen -t rsa
+- vainstalirebt mediatorshi
+ssh-copy-id -i ~/.ssh/id_rsa.pub maxiot@104.168.53.100
+- sheamowme / unda shevides pirdapir araviari parolit
+ssh maxiot@104.168.53.100
+------------------------------------------------------------------
+2)**** autossh
+------------------------------------------------------------------
+sudo apt-get install autossh
+------------------------------------------------------------------
+22 - USER - 1212  ===> 1212 - MEDIATOR
+
+autossh -M 19761 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 1976:localhost:22 maxiot@104.168.53.100
 
 
+
+ssh -f -N -T -R 1212:localhost:22 maxiot@104.168.53.100 
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+
+sudo apt-get install upstart-sysv
+sudo update-initramfs -u
+sudo reboot
 
 #################################################################################################
 22 ##############################################################################################
@@ -90,6 +120,147 @@ autossh -M 4203 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=fals
 putty.exe -L 4003:127.0.0.1:4103  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot
 
 #################################################################################################
+
+fswebcam -r 640x480 --jpeg 85 -D 1 /home/maxiot/pic/`date +%d-%m-%y-%H-%M-%S`.jpeg
+
+
+https://askubuntu.com/questions/610903/how-can-i-create-a-video-file-from-a-set-of-jpg-images
+https://superuser.com/questions/624567/how-to-create-a-video-from-images-using-ffmpeg
+ffmpeg -start_number 1532953739 -i pic-%d.jpeg -vcodec mpeg4 test.avi
+
+!!!!!!!!!!!!!33333333
+https://ubuntuforums.org/showthread.php?t=1337440
+
+
+Run
+In order to run and capture once type:
+
+fswebcam --device /dev/video0 output.jpeg
+If you wish to alter resolution type:
+
+fswebcam -d /dev/video0 -r 1600x1200 output.jpeg
+Save picture with todays date and time
+
+fswebcam -d /dev/video0 -r 1600x1200 /mnt/picture-`date +%d-%m-%y-%H-%M-%S`.jpeg 
+
+%S-%M
+
+In order to start deamon type:
+
+fswebcam -c /tmp/fswebcam.conf
+In order to running daemon type:
+
+killall -9 fswebcam
+
+
+
+#################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#{"_DES_":"autossh 4103 - 4003"}
+#{"_PER_":"3"}
+#{"_OUT_0_DES_":"DATA OUT"}
+#{"_IN_0_PUSH_":"1"}
+
+##PER:3"
+
+#MEM_0 = ""
+import commands
+
+
+if MEM_0 <> "yes" :
+    MEM_0 = "yes"
+    x = "OK"
+    commands.getoutput('autossh -M 4203 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 4103:localhost:4003 maxiot@104.168.53.100')
+else :
+    x = "yes..."
+    
+    
+
+OUT_0 = str( x)
+
+
+
+#################################################################################################
+putty.exe -L 4003:127.0.0.1:1976  -ssh 104.168.53.100 -P 22 -l maxiot -pw maxiot 
+
+
+
+
+
+
+
+
+
+
+
+
+
+sudo ssh -L \*:8080:localhost:1977  -N maxiot@127.0.0.1
+
+
+
+
+sshpass -p "YOUR_PASSWORD" ssh -o StrictHostKeyChecking=no YOUR_USERNAME@SOME_SITE.COM
+
+
+sshpass -p "maxiot" ssh -L \*:8080:localhost:1977  -N maxiot@127.0.0.1
+
+
+
+sudo sshpass -p "maxiot" ssh -L \*:8090:localhost:1977  -N maxiot@127.0.0.1
+
+sshpass -p "mypassword" autossh -R 19999:localhost:22 user@server.com
+
+
+
+
+
+sshpass -p "maxiot" autossh ssh -L \*:8080:localhost:1977  -N maxiot@127.0.0.1
+
+
+
+commands.getoutput('sshpass -p "maxiot" autossh -M 19761 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -L \*:9000:localhost:1977 maxiot@127.0.0.1')
+
+9999999999999999999
+#{"_DES_":"autossh 1977 - 9000"}
+#{"_PER_":"3"}
+#{"_OUT_0_DES_":"DATA OUT"}
+#{"_IN_0_PUSH_":"1"}
+
+##PER:3"
+
+#MEM_0 = ""
+import commands
+
+
+if MEM_0 <> "yes" :
+    MEM_0 = "yes"
+    x = "OK"
+    commands.getoutput('sshpass -p "maxiot" autossh -M 19761 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -L \*:9000:localhost:1977 maxiot@127.0.0.1')
+    #commands.getoutput('autossh -M 19761 -fN -o "PubkeyAuthentication=yes" -o "StrictHostKeyChecking=false" -o "PasswordAuthentication=no" -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -R 1976:localhost:22 maxiot@104.168.53.100')
+else :
+    x = "yes..."
+    
+    
+
+OUT_0 = str( x)
+
+9999999999999999999
 
 
 #{"_DES_":"subprocess.Popen"}
