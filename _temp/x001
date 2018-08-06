@@ -385,10 +385,21 @@ https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-local-with-systemd
 
 
 
+#################################################################################################
+ sudo pip install --upgrade pip
+ sudo pip install jupyter
+
+$ jupyter notebook password
+Enter password:  ****
+Verify password: ****
+[NotebookPasswordApp] Wrote hashed password to /Users/you/.jupyter/jupyter_notebook_config.json
 
 
-
-
+ nohup jupyter notebook --no-browser &
+ 
+ 
+ 
+#################################################################################################
 
 
 
